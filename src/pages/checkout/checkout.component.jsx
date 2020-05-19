@@ -1,44 +1,44 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
+import CreditCard from "../../assets/pay.svg";
+import CardExp from "../../assets/icon-calendar-date.svg";
+import CardCVC from "../../assets/icon-lock.svg";
+
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
 
 import {
   selectCartItems,
-  selectCartTotal
-} from '../../redux/cart/cart.selectors';
+  selectCartTotal,
+} from "../../redux/cart/cart.selectors";
 
-import './checkout.styles.scss';
+import "./checkout.styles.scss";
 
 const CheckoutPage = ({ cartItems, total }) => (
-  <div className='checkout-page'>
-    <div className='checkout-header'>
-      <div className='header-block'>
-        <span>Product</span>
-      </div>
-      <div className='header-block'>
-        <span>Description</span>
-      </div>
-      <div className='header-block'>
-        <span>Quantity</span>
-      </div>
-      <div className='header-block'>
-        <span>Price</span>
-      </div>
-      <div className='header-block'>
-        <span>Remove</span>
-      </div>
-    </div>
-    {cartItems.map(cartItem => (
+  <div className="checkout-page">
+    {cartItems.map((cartItem) => (
       <CheckoutItem key={cartItem.id} cartItem={cartItem} />
     ))}
-    <div className='total'>TOTAL: ${total}</div>
-    <div className='test-warning'>
-      *Please use the following test credit card for payments*
-      <br />
-      4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
+    <div className="total">
+      Your total is
+      <span className="totalPrice"> ${total}</span>
+    </div>
+    <div className="test-warning">
+      <p className="test-title">
+        Please use the credit card below when making payments.
+      </p>
+      <span className="test-message">
+        <img src={CreditCard} alt="Credit Card icon" />
+        4242 4242 4242 4242
+        <br />
+        <img src={CardExp} alt="Calender Icon" />
+        01/30
+        <br />
+        <img src={CardCVC} alt="Secure Lock" />
+        123
+      </span>
     </div>
     <StripeCheckoutButton price={total} />
   </div>
@@ -46,7 +46,7 @@ const CheckoutPage = ({ cartItems, total }) => (
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
-  total: selectCartTotal
+  total: selectCartTotal,
 });
 
 export default connect(mapStateToProps)(CheckoutPage);
