@@ -5,15 +5,18 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid hsl(210, 31%, 80%);
+  border-radius: 4px;
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.1);
   background-color: white;
-  top: 90px;
-  right: 40px;
+  top: 80px;
+  right: 56px;
   z-index: 5;
 
   .empty-message {
+    color: hsl(209, 28%, 39%);
     font-size: 18px;
-    margin: 50px auto;
+    margin: 24px auto;
   }
 
   .cart-items {

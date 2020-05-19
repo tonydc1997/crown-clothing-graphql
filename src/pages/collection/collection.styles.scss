@@ -1,8 +1,10 @@
 .collection-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   .title {
+    color: hsl(209, 61%, 16%);
     font-size: 38px;
     margin: 0 auto 30px;
   }
@@ -10,10 +12,11 @@
   .items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 16px;
+    margin-bottom: 48px;
 
-    & .collection-item {
-      margin-bottom: 30px;
+    @media screen and (max-width: 800px) {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
