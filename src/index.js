@@ -23,12 +23,14 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </BrowserRouter>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </BrowserRouter>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById("root")
 );
