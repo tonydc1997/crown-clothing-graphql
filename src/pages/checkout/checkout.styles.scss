@@ -24,9 +24,13 @@
     }
   }
 
-  button {
-    margin-left: auto;
+  .button-container {
+    align-self: flex-end;
     margin-top: 50px;
+
+    @media screen and (max-width: 450px) {
+      align-self: unset;
+    }
   }
 
   .test-warning {

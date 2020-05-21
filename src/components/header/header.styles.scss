@@ -43,6 +43,10 @@
     align-items: baseline;
     justify-content: flex-end;
 
+    @media screen and (max-width: 450px) {
+      width: 70%;
+    }
+
     .option {
       cursor: pointer;
       color: hsl(209, 34%, 30%);
