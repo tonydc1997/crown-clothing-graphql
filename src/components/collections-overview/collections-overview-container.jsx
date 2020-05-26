@@ -31,3 +31,5 @@ const CollectionsOverviewContainer = () => (
     }}
   </Query>
 );
+
+export default CollectionsOverviewContainer;
