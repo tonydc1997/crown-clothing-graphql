@@ -8,6 +8,20 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 import "./collection.styles.scss";
 
 const CollectionPage = ({ collection }) => {
+  const GET_COLLECTION_BY_TITLE = gql`
+    query getCollectionsByTitle($title: String!) {
+      getCollectionsByTitle(title: $title) {
+        id
+        title
+        items {
+          id
+          name
+          price
+          imageUrl
+        }
+      }
+    }
+  `;
   const { title, items } = collection;
   return (
     <div className="collection-page">
