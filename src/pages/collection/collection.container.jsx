@@ -32,3 +32,5 @@ const CollectionPageContainer = ({ match }) => (
     }}
   </Query>
 );
+
+export default CollectionPageContainer;
