@@ -1,5 +1,8 @@
 import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
+import Spinner from "../../components/spinner/spinner.component";
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
 import "./collection.styles.scss";
