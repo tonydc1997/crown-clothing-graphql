@@ -7,7 +7,7 @@ import Spinner from "../spinner/spinner.component";
 
 import "./collections-overview.styles.scss";
 
-const CollectionsOverview = ({ collections }) => {
+const CollectionsOverview = () => {
   const GET_COLLECTIONS = gql`
     {
       collections {
@@ -22,6 +22,10 @@ const CollectionsOverview = ({ collections }) => {
       }
     }
   `;
+
+  const { loading, data } = useQuery(GET_COLLECTIONS);
+  if (loading) return <Spinner />;
+  const { collections } = data;
 
   return (
     <div className="collections-overview">
