@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import { default as CollectionsOverview } from "../../components/collections-overview/collections-overview-container";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 import { default as CollectionPage } from "../collection/collection.container";
 import "./shop.styles.scss";
 
