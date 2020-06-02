@@ -8,22 +8,24 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 import "./collection.styles.scss";
 
 const GET_COLLECTION_BY_TITLE = gql`
-query getCollectionsByTitle($title: String!) {
-  getCollectionsByTitle(title: $title) {
-    id
-    title
-    items {
+  query getCollectionsByTitle($title: String!) {
+    getCollectionsByTitle(title: $title) {
       id
-      name
-      price
-      imageUrl
+      title
+      items {
+        id
+        name
+        price
+        imageUrl
+      }
     }
   }
-}
 `;
 
 const CollectionPage = ({ match }) => {
-  const {loading, data} = useQuery(GET_COLLECTION_BY_TITLE, {variables: {title: }})
+  const { loading, data } = useQuery(GET_COLLECTION_BY_TITLE, {
+    variables: { title: match.params.collectionId },
+  });
   const { title, items } = collection;
   return (
     <div className="collection-page">
