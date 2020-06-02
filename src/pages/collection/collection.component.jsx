@@ -26,17 +26,22 @@ const CollectionPage = ({ match }) => {
   const { loading, data } = useQuery(GET_COLLECTION_BY_TITLE, {
     variables: { title: match.params.collectionId },
   });
-  const { title, items } = collection;
-  return (
-    <div className="collection-page">
-      <h2 className="title">{title}</h2>
-      <div className="items">
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
+  if (loading) return <Spinner />;
+
+  const { getCollectionsByTitle } = data;
+  const { title, items } = getCollectionsByTitle;
+
+  if (data)
+    return (
+      <div className="collection-page">
+        <h2 className="title">{title}</h2>
+        <div className="items">
+          {items.map((item) => (
+            <CollectionItem key={item.id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default CollectionPage;
