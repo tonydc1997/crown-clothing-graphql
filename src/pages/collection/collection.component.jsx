@@ -22,7 +22,7 @@ query getCollectionsByTitle($title: String!) {
 }
 `;
 
-const CollectionPage = ({ collection }) => {
+const CollectionPage = ({ match }) => {
   const {loading, data} = useQuery(GET_COLLECTION_BY_TITLE, {variables: {title: }})
   const { title, items } = collection;
   return (
