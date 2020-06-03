@@ -8,11 +8,11 @@ import "./collection-item.styles.scss";
 
 const CollectionItem = ({ item }) => {
   const ADD_ITEM_TO_CART = gql`
-    mutatation AddItemToCart($item: Item!) {
+    mutation AddItemToCart($item: Item!) {
       addItemToCart(item: $item) @client
     }
   `;
-
+  const [addItemToCart] = useMutation(ADD_ITEM_TO_CART);
   const { name, price, imageUrl } = item;
 
   return (
@@ -27,7 +27,10 @@ const CollectionItem = ({ item }) => {
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
-      <CustomButton onClick={() => addItem(item)} inverted>
+      <CustomButton
+        onClick={() => addItemToCart({ variables: { item } })}
+        inverted
+      >
         Add to cart
       </CustomButton>
     </div>
