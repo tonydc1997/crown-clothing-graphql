@@ -31,5 +31,6 @@ export const resolvers = {
 
       return !cartHidden;
     },
+    AddItemToCart: (_root, { item }, { cache }) => {},
   },
 };
