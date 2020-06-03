@@ -14,6 +14,6 @@ const GET_CART_HIDDEN = gql`
 
 export const resolvers = {
   Mutation: {
-    toggleCartHidden: () => {},
+    toggleCartHidden: (_root, _args, { cache }) => {},
   },
 };
