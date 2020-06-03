@@ -15,6 +15,11 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 
 const Header = ({ currentUser, hidden }) => {
+  const GET_CART_HIDDEN = gql`
+    {
+      cartHidden @client
+    }
+  `;
   return (
     <div className="header">
       <Link className="logo-container" to="/">
