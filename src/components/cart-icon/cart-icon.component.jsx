@@ -16,6 +16,7 @@ const CartIcon = ({ itemCount }) => {
       toggleCartHidden @client
     }
   `;
+  const [toggleCartHidden] = useMutation(TOGGLE_CART_HIDDEN);
 
   return (
     <div className="cart-icon" onClick={toggleCartHidden}>
