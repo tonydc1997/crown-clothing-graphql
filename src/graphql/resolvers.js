@@ -37,6 +37,10 @@ export const resolvers = {
 
       return !cartHidden;
     },
-    AddItemToCart: (_root, { item }, { cache }) => {},
+    AddItemToCart: (_root, { item }, { cache }) => {
+      const { cartItems } = cache.readQuery({
+        query: GET_CART_ITEMS,
+      });
+    },
   },
 };
