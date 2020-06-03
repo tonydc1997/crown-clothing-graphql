@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
 
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
