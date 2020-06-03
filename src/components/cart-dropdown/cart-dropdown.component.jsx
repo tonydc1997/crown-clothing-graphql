@@ -9,6 +9,22 @@ import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = ({ history }) => {
+  const GET_CART_ITEMS = gql`
+    {
+      cartItems @client
+    }
+  `;
+  const TOGGLE_CART_HIDDEN = gql`
+    mutation ToggleCartHidden {
+      toggleCartHidden @client
+    }
+  `;
+  const {
+    data: { cartItems },
+  } = useQuery(GET_CART_ITEMS);
+
+  const [toggleCartHidden] = useMutation(TOGGLE_CART_HIDDEN);
+
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
