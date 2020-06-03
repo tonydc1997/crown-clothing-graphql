@@ -7,6 +7,12 @@ import CustomButton from "../custom-button/custom-button.component";
 import "./collection-item.styles.scss";
 
 const CollectionItem = ({ item }) => {
+  const ADD_ITEM_TO_CART = gql`
+    mutatation AddItemToCart($item: Item!) {
+      addItemToCart(item: $item) @client
+    }
+  `;
+
   const { name, price, imageUrl } = item;
 
   return (
