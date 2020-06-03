@@ -5,3 +5,5 @@ export const typeDefs = gql`
     ToggleCartHidden: Boolean!
   }
 `;
+
+export const resolvers = {};
