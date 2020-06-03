@@ -16,6 +16,11 @@ const GET_CART_HIDDEN = gql`
     cartHidden @client
   }
 `;
+const GET_CART_ITEMS = gql`
+  {
+    cartItems @client
+  }
+`;
 
 export const resolvers = {
   Mutation: {
