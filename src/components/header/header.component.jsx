@@ -20,8 +20,9 @@ const Header = ({ currentUser }) => {
       cartHidden @client
     }
   `;
-  const { data } = useQuery(GET_CART_HIDDEN);
-  const { cartHidden } = data;
+  const {
+    data: { cartHidden },
+  } = useQuery(GET_CART_HIDDEN);
 
   return (
     <div className="header">
