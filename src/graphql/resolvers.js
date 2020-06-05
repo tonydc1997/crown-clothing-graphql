@@ -75,6 +75,7 @@ export const resolvers = {
         query: GET_CART_ITEMS,
       });
       const newCartItems = addItemToCart(cartItems, item);
+      updateCartItemsRelatedQueries(cache, newCartItems);
 
       return newCartItems;
     },
@@ -83,6 +84,7 @@ export const resolvers = {
         query: GET_CART_ITEMS,
       });
       const newCartItems = removeItemFromCart(cartItems, item);
+      updateCartItemsRelatedQueries(cache, newCartItems);
 
       return newCartItems;
     },
