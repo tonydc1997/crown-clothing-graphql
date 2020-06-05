@@ -49,6 +49,11 @@ export const resolvers = {
       const newCartItems = addItemToCart(cartItems, item);
 
       cache.writeQuery({
+        query: GET_ITEM_COUNT,
+        data: { itemCount: getCartItemCount(newCartItems) },
+      });
+
+      cache.writeQuery({
         query: GET_CART_ITEMS,
         data: { cartItems: newCartItems },
       });
