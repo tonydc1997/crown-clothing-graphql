@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { gql } from "apollo-boost";
@@ -20,26 +20,44 @@ const Header = ({ currentUser }) => {
       cartHidden @client
     }
   `;
-  const { data } = useQuery(GET_CART_HIDDEN);
-  const { cartHidden } = data;
+  const {
+    data: { cartHidden },
+  } = useQuery(GET_CART_HIDDEN);
 
   return (
     <div className="header">
-      <Link className="logo-container" to="/">
+      <NavLink
+        className="logo-container"
+        activeClassName="selected-underline"
+        exact
+        to="/"
+      >
         <Logo className="logo" />
-      </Link>
+      </NavLink>
       <div className="options">
-        <Link className="option" to="/shop">
+        <NavLink
+          className="option"
+          activeClassName="selected-overline"
+          to="/shop"
+        >
           SHOP
-        </Link>
+        </NavLink>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <div
+            className="option"
+            activeClassName="selected-overline"
+            onClick={() => auth.signOut()}
+          >
             SIGN OUT
           </div>
         ) : (
-          <Link className="option" to="/signin">
+          <NavLink
+            className="option"
+            activeClassName="selected-overline"
+            to="/signin"
+          >
             SIGN IN
-          </Link>
+          </NavLink>
         )}
         <CartIcon />
       </div>

@@ -31,7 +31,8 @@
       transition: transform 0.3s ease-in-out;
     }
 
-    &:hover::before {
+    &:hover::before,
+    &.selected-underline::before {
       transform: translate(-50%, 0) scaleX(1);
     }
   }
@@ -49,11 +50,12 @@
 
     .option {
       cursor: pointer;
-      color: hsl(209, 34%, 30%);
+      color: hsl(210, 22%, 49%);
       font-size: 14px;
       font-weight: bold;
       padding: 24px 16px;
       position: relative;
+      transition: all 0.3s ease-in-out;
 
       &::before {
         content: "";
@@ -69,13 +71,15 @@
         transition: all 0.3s ease-in-out;
       }
 
-      &:hover::before {
-        transform: translate(-50%, 0) scaleX(1);
-        opacity: 1;
+      &:hover,
+      &.selected-overline {
+        color: hsl(211, 39%, 23%);
       }
 
-      &:hover {
-        color: hsl(211, 39%, 23%);
+      &:hover::before,
+      &.selected-overline::before {
+        transform: translate(-50%, 0) scaleX(1);
+        opacity: 1;
       }
     }
   }
