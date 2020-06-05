@@ -12,6 +12,11 @@ const CartIcon = () => {
       toggleCartHidden @client
     }
   `;
+  const GET_ITEM_COUNT = gql`
+    {
+      itemCount @client
+    }
+  `;
   const [toggleCartHidden] = useMutation(TOGGLE_CART_HIDDEN);
 
   return (
