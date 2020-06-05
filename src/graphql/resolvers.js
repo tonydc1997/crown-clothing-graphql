@@ -29,7 +29,7 @@ const GET_ITEM_COUNT = gql`
 `;
 const GET_CART_TOTAL = gql`
   {
-    cartTotal @client;
+    cartTotal @client
   }
 `;
 

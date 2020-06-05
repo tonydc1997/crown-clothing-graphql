@@ -11,17 +11,17 @@ import StripeCheckoutButton from "../../components/stripe-button/stripe-button.c
 
 import "./checkout.styles.scss";
 
-const CheckoutPage = ({ cartItems, total }) => {
+const CheckoutPage = () => {
   const GET_CART_ITEMS = gql`
     {
-      cartItems @client;
+      cartItems @client
     }
   `;
   const GET_CART_TOTAL = gql`
-  {
-    cartTotal @client;
-  }
-`;
+    {
+      cartTotal @client
+    }
+  `;
   const {
     data: { cartItems },
   } = useQuery(GET_CART_ITEMS);
@@ -36,7 +36,7 @@ const CheckoutPage = ({ cartItems, total }) => {
       ))}
       <div className="total">
         Your total is
-        <span className="totalPrice"> ${total}</span>
+        <span className="totalPrice"> ${cartTotal}</span>
       </div>
       <div className="test-warning">
         <p className="test-title">
@@ -54,7 +54,7 @@ const CheckoutPage = ({ cartItems, total }) => {
         </span>
       </div>
       <div className="button-container">
-        <StripeCheckoutButton price={total} />
+        <StripeCheckoutButton price={cartTotal} />
       </div>
     </div>
   );
