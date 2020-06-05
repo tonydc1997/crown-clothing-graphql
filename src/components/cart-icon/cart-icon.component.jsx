@@ -17,6 +17,9 @@ const CartIcon = () => {
       itemCount @client
     }
   `;
+  const {
+    data: { itemCount },
+  } = useQuery(GET_ITEM_COUNT);
   const [toggleCartHidden] = useMutation(TOGGLE_CART_HIDDEN);
 
   return (
