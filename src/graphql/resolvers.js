@@ -1,5 +1,5 @@
 import { gql } from "apollo-boost";
-import { addItemToCart } from "./cart.utils";
+import { addItemToCart, getCartItemCount } from "./cart.utils";
 
 export const typeDefs = gql`
   extend type Item {
