@@ -22,6 +22,11 @@ const GET_CART_ITEMS = gql`
     cartItems @client
   }
 `;
+const GET_ITEM_COUNT = gql`
+  {
+    itemCount @client
+  }
+`;
 
 export const resolvers = {
   Mutation: {
