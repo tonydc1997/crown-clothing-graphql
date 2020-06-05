@@ -12,6 +12,23 @@ import StripeCheckoutButton from "../../components/stripe-button/stripe-button.c
 import "./checkout.styles.scss";
 
 const CheckoutPage = ({ cartItems, total }) => {
+  const GET_CART_ITEMS = gql`
+    {
+      cartItems @client;
+    }
+  `;
+  const GET_CART_TOTAL = gql`
+  {
+    cartTotal @client;
+  }
+`;
+  const {
+    data: { cartItems },
+  } = useQuery(GET_CART_ITEMS);
+  const {
+    data: { cartTotal },
+  } = useQuery(GET_CART_TOTAL);
+
   return (
     <div className="checkout-page">
       {cartItems.map((cartItem) => (
