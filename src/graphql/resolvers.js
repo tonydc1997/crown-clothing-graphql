@@ -59,6 +59,11 @@ export const resolvers = {
       });
 
       cache.writeQuery({
+        query: GET_CART_TOTAL,
+        data: { cartTotal: getCartTotal(newCartItems) },
+      });
+
+      cache.writeQuery({
         query: GET_CART_ITEMS,
         data: { cartItems: newCartItems },
       });
