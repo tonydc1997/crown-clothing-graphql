@@ -1,17 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 import { gql } from "apollo-boost";
 import { useMutation } from "react-apollo";
 
-import {
-  clearItemFromCart,
-  addItem,
-  removeItem,
-} from "../../redux/cart/cart.actions";
-
 import "./checkout-item.styles.scss";
 
-const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+const CheckoutItem = ({ cartItem }) => {
   const ADD_ITEM_TO_CART = gql`
     mutation AddItemToCart($item: Item!) {
       addItemToCart(item: $item) @client
@@ -55,10 +48,4 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  clearItem: (item) => dispatch(clearItemFromCart(item)),
-  addItem: (item) => dispatch(addItem(item)),
-  removeItem: (item) => dispatch(removeItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem;
