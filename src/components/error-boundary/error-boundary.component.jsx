@@ -1,5 +1,6 @@
 import React from "react";
 import astronaut from "../../assets/astronaut.png";
+import "./error-boundary.styles.scss";
 
 class ErrorBoundary extends React.Component {
   constructor() {
