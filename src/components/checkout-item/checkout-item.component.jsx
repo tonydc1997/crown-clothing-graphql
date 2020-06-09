@@ -28,6 +28,8 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
     }
   `;
   const [addItemToCart] = useMutation(ADD_ITEM_TO_CART);
+  const [removeItemFromCart] = useMutation(REMOVE_ITEM_FROM_CART);
+  const [clearItemFromCart] = useMutation(CLEAR_ITEM_FROM_CART);
 
   const { name, imageUrl, price, quantity } = cartItem;
   return (
