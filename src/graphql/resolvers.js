@@ -89,5 +89,14 @@ export const resolvers = {
 
       return newCartItems;
     },
+    clearItemFromCart: (_root, { item }, { cache }) => {
+      const { cartItems } = cache.readQuery({
+        query: GET_CART_ITEMS,
+      });
+      const newCartItems = clearItemFromCart(cartItems, item);
+      updateCartItemsRelatedQueries(cache, newCartItems);
+
+      return newCartItems;
+    },
   },
 };
