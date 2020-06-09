@@ -4,6 +4,7 @@ import {
   removeItemFromCart,
   getCartItemCount,
   getCartTotal,
+  clearItemFromCart,
 } from "./cart.utils";
 
 export const typeDefs = gql`
