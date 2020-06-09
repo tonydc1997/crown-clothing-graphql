@@ -1,5 +1,5 @@
 import React from "react";
-import astronaut from "../../assets/images/astronaut.png";
+import astronaut from "../../assets/astronaut.png";
 
 class ErrorBoundary extends React.Component {
   constructor() {
