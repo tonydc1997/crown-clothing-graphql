@@ -17,6 +17,16 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
       addItemToCart(item: $item) @client
     }
   `;
+  const REMOVE_ITEM_FROM_CART = gql`
+    mutation RemoveItemFromCart($item: Item!) {
+      removeItemFromCart(item: $item) @client
+    }
+  `;
+  const CLEAR_ITEM_FROM_CART = gql`
+    mutation ClearItemFromCart($item: Item!) {
+      clearItemFromCart(item: $item) @client
+    }
+  `;
   const [addItemToCart] = useMutation(ADD_ITEM_TO_CART);
 
   const { name, imageUrl, price, quantity } = cartItem;
