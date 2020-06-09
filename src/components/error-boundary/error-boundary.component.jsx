@@ -24,7 +24,11 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasErrored) {
       return (
         <div className="error-image-overlay">
-          <img src={astronaut} alt="An astronaut lost in space" />
+          <img
+            src={astronaut}
+            alt="An astronaut lost in space"
+            className="error-image-container"
+          />
           <p className="error-text">Sorry, this page is lost in space...</p>
         </div>
       );
