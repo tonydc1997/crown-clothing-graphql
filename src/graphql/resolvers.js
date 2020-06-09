@@ -15,6 +15,7 @@ export const typeDefs = gql`
     ToggleCartHidden: Boolean!
     AddItemToCart(item: Item!): [Item]!
     RemoveItemFromCart(item: Item!): [Item]!
+    ClearItemFromCart(item: Item!): [Item]!
   }
 `;
 
