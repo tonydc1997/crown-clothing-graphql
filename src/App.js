@@ -16,6 +16,11 @@ import Header from "./components/header/header.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 const App = () => {
+  const SET_CURRENT_USER = gql`
+    mutation SetCurrentUser($user: User!) {
+      setCurrentUser(user: $user) @client
+    }
+  `;
   const GET_CURRENT_USER = gql`
     {
       currentUser @client
