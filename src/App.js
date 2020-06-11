@@ -1,5 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { gql } from "apollo-boost";
+import { useQuery } from "@apollo/react-hooks";
 import { connect } from "react-redux";
 
 import "./App.css";
