@@ -18,6 +18,7 @@ const Header = ({ currentUser }) => {
   const GET_CLIENT_PROPERTIES = gql`
     {
       cartHidden @client
+      currentUser @client
     }
   `;
   const {
