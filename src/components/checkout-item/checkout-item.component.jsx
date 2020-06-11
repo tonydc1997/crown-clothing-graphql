@@ -34,14 +34,14 @@ const CheckoutItem = ({ cartItem }) => {
       <span className="quantity">
         <div
           className="arrow"
-          onClick={() => removeItemFromCart({ variables: { cartItem } })}
+          onClick={() => removeItemFromCart({ variables: { item: cartItem } })}
         >
           &#10094;
         </div>
         <span className="value">{quantity}</span>
         <div
           className="arrow"
-          onClick={() => addItemToCart({ variables: { cartItem } })}
+          onClick={() => addItemToCart({ variables: { item: cartItem } })}
         >
           &#10095;
         </div>
@@ -49,7 +49,7 @@ const CheckoutItem = ({ cartItem }) => {
       <span className="price">${price}</span>
       <div
         className="remove-button"
-        onClick={() => clearItemFromCart({ variables: { cartItem } })}
+        onClick={() => clearItemFromCart({ variables: { item: cartItem } })}
       >
         &#10005;
       </div>
