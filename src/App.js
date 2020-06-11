@@ -15,53 +15,51 @@ import Header from "./components/header/header.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+const App = () => {
+  // unsubscribeFromAuth = null;
 
-  componentDidMount() {
-    const { setCurrentUser } = this.props;
+  // componentDidMount() {
+  //   const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+  //     if (userAuth) {
+  //       const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      }
+  //       userRef.onSnapshot((snapShot) => {
+  //         setCurrentUser({
+  //           id: snapShot.id,
+  //           ...snapShot.data(),
+  //         });
+  //       });
+  //     }
 
-      setCurrentUser(userAuth);
-    });
-  }
+  //     setCurrentUser(userAuth);
+  //   });
+  // }
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+  // componentWillUnmount() {
+  //   this.unsubscribeFromAuth();
+  // }
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <Switch>
-          <ErrorBoundary>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/shop" component={ShopPage} />
-            <Route exact path="/checkout" component={CheckoutPage} />
-            <Route
-              exact
-              path="/signin"
-              render={() =>
-                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
-              }
-            />
-          </ErrorBoundary>
-        </Switch>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Header />
+      <Switch>
+        <ErrorBoundary>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+            }
+          />
+        </ErrorBoundary>
+      </Switch>
+    </div>
+  );
+};
 
 export default App;
