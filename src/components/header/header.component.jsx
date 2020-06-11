@@ -22,7 +22,7 @@ const Header = ({ currentUser }) => {
     }
   `;
   const {
-    data: { cartHidden },
+    data: { cartHidden, currentUser },
   } = useQuery(GET_CLIENT_PROPERTIES);
 
   return (
