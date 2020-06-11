@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import "./App.css";
 
@@ -27,6 +27,7 @@ const App = () => {
     }
   `;
   const { currentUser } = useQuery(GET_CURRENT_USER);
+  const [setCurrentUser] = useMutation(SET_CURRENT_USER);
 
   // unsubscribeFromAuth = null;
 
