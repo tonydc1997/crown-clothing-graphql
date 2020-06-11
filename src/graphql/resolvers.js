@@ -110,5 +110,11 @@ export const resolvers = {
 
       return newCartItems;
     },
+    setCurrentUser: (_root, { user }, { cache }) => {
+      cache.writeQuery({
+        query: GET_CURRENT_USER,
+        data: { currentUser: user },
+      });
+    },
   },
 };
