@@ -45,6 +45,12 @@ class App extends React.Component {
   }
 
   render() {
+    const GET_CURRENT_USER = gql`
+      {
+        currentUser @client
+      }
+    `;
+    const { currentUser } = useQuery(GET_CURRENT_USER);
     return (
       <div>
         <Header />
