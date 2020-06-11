@@ -1,6 +1,7 @@
 import React from "react";
 
 import MenuItem from "../menu-item/menu-item.component";
+import DIRECTORY_DATA from "./directory-data";
 
 import "./directory.styles.scss";
 
