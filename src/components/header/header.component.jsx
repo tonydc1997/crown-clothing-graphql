@@ -14,7 +14,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./header.styles.scss";
 
-const Header = ({ currentUser }) => {
+const Header = () => {
   const GET_CLIENT_PROPERTIES = gql`
     {
       cartHidden @client
