@@ -51,6 +51,11 @@ const GET_CART_TOTAL = gql`
     cartTotal @client
   }
 `;
+const GET_CURRENT_USER = gql`
+  {
+    currentUser @client
+  }
+`;
 
 const updateCartItemsRelatedQueries = (cache, newCartItems) => {
   cache.writeQuery({
