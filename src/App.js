@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { connect } from "react-redux";
 
 import "./App.css";
 
@@ -15,8 +14,6 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import Header from "./components/header/header.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-
-import { setCurrentUser } from "./redux/user/user.actions";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -45,12 +42,6 @@ class App extends React.Component {
   }
 
   render() {
-    const GET_CURRENT_USER = gql`
-      {
-        currentUser @client
-      }
-    `;
-    const { currentUser } = useQuery(GET_CURRENT_USER);
     return (
       <div>
         <Header />
@@ -63,11 +54,7 @@ class App extends React.Component {
               exact
               path="/signin"
               render={() =>
-                this.props.currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignInAndSignUpPage />
-                )
+                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
               }
             />
           </ErrorBoundary>
@@ -77,8 +64,4 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapDispatchToProps)(App);
+export default App;
