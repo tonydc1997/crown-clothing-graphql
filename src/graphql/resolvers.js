@@ -1,4 +1,5 @@
 import { gql } from "apollo-boost";
+import { onError } from "apollo-link-error";
 import {
   addItemToCart,
   removeItemFromCart,
