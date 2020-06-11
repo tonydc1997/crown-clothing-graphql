@@ -1,14 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
@@ -67,8 +64,4 @@ const Header = () => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
