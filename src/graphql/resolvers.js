@@ -11,6 +11,12 @@ export const typeDefs = gql`
   extend type Item {
     quantity: Int
   }
+  extend type User {
+    id: ID!
+    displayName: String!
+    email: String!
+    createdAt: DateTime!
+  }
 
   extend type Mutation {
     ToggleCartHidden: Boolean!
