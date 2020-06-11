@@ -16,6 +16,13 @@ import Header from "./components/header/header.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 const App = () => {
+  const GET_CURRENT_USER = gql`
+    {
+      currentUser @client
+    }
+  `;
+  const { currentUser } = useQuery(GET_CURRENT_USER);
+
   // unsubscribeFromAuth = null;
 
   // componentDidMount() {
