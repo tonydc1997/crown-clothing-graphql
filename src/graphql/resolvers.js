@@ -120,6 +120,8 @@ export const resolvers = {
         query: GET_CURRENT_USER,
         data: { currentUser: user },
       });
+
+      return user;
     },
   },
 };
