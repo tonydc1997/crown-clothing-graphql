@@ -29,6 +29,24 @@ const App = () => {
   const { currentUser } = useQuery(GET_CURRENT_USER);
   const [setCurrentUser] = useMutation(SET_CURRENT_USER);
 
+  useEffect(() => {
+    return auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapShot) => {
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data(),
+          });
+        });
+      }
+
+      setCurrentUser({ variables: { user: userAuth } });
+    });
+  }, [setCurrentUser]);
+  console.log(currentUser);
+
   // unsubscribeFromAuth = null;
 
   // componentDidMount() {
