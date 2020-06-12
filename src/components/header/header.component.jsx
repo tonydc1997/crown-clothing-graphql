@@ -1,28 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./header.styles.scss";
 
-const Header = ({ currentUser }) => {
-  const GET_CART_HIDDEN = gql`
+const Header = () => {
+  const GET_CLIENT_PROPERTIES = gql`
     {
       cartHidden @client
+      currentUser @client
     }
   `;
   const {
-    data: { cartHidden },
-  } = useQuery(GET_CART_HIDDEN);
+    data: { cartHidden, currentUser },
+  } = useQuery(GET_CLIENT_PROPERTIES);
+  console.log(currentUser);
 
   return (
     <div className="header">
@@ -43,11 +42,7 @@ const Header = ({ currentUser }) => {
           SHOP
         </NavLink>
         {currentUser ? (
-          <div
-            className="option"
-            activeClassName="selected-overline"
-            onClick={() => auth.signOut()}
-          >
+          <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
         ) : (
@@ -66,8 +61,4 @@ const Header = ({ currentUser }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
