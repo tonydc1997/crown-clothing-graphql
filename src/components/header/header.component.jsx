@@ -21,6 +21,7 @@ const Header = () => {
   const {
     data: { cartHidden, currentUser },
   } = useQuery(GET_CLIENT_PROPERTIES);
+  console.log(currentUser);
 
   return (
     <div className="header">
@@ -41,11 +42,7 @@ const Header = () => {
           SHOP
         </NavLink>
         {currentUser ? (
-          <div
-            className="option"
-            activeClassName="selected-overline"
-            onClick={() => auth.signOut()}
-          >
+          <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
         ) : (
